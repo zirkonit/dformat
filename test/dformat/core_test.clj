@@ -13,5 +13,10 @@
 			(is (= (dformat date "Sun Aug 5") "Thu Jun 9"))
 			(is (= (dformat date "12/31/99") "06/09/11"))
 			(is (= (dformat date "DOB: 12/31/2000") "DOB: 06/09/2011"))
-			(is (= (dformat date "March 15, 1999") "June 09, 2011"))))
+			(is (= (dformat date "March 15, 1999") "June 09, 2011")))
+
+		  (testing "Trickier examples"
+		  	(is (not= (dformat date "01/01/99") "06/06/11")))
+		  	(is (= (dformat date "01/01/99") "06/09/11"))
+		  )
 	)

@@ -25,12 +25,10 @@ Also, there is `dformatter` method which returns `clj-time` date formatter.
 ```clojure
 (require '[clj-time.format :as f])
 
-
-(def custom-formatter (clj-time.format/formatter "yyyy-MM-dd"))
-
 (clj-time.format/unparse 
-	custom-formatter 
+	(clj-time.format/formatter "yyyy-MM-dd") 
 	(clj-time.core/date-time 2010 10 3))	;; "2010-10-03"
+
 (clj-time.format/unparse 
 	(dformatter "2012-11-21") 
 	(clj-time.core/date-time 2010 10 3))	;; "2010-10-03"

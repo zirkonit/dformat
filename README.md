@@ -2,6 +2,14 @@
 
 A Clojure library designed to simplify handling time and date format strings by using human-provided examples. Inspired by / shamelessly stolen from [jeremyw's stamp](https://github.com/jeremyw/stamp)
 
+## Installation
+
+Leiningen:
+
+```clojure
+[dformat "0.1.0"]
+```
+
 ## Usage
 
 Give `dformat` an example date string with whatever month, day, year, and weekday parts you'd like, and your date will be formatted accordingly:

@@ -35,8 +35,6 @@
          "VET"  "VLAT"  "VOLT" "VOST" "VUT"  "WAKT"  "WAST"  "WAT"
          "WEDT" "WEST"  "WET"  "WST"  "YAKT" "YEKT"]) 
       ")$"))
-
-  "AZOST"
 )
 
 (def monthnames-regexp 
@@ -158,14 +156,17 @@
     tokens) 
   :tokens))
 
-(defn dformat
+(defn dformatter
   "Takes a clj-time date to format and a sample usage string to get formatting
-   from. Returns `date` formatted with the format identical to one of the
-   `sample`" 
-  [date sample]
+   from. Returns a clj-time formatter with the format identical to one of the 
+   `sample`."
+  [sample]
   (let [tokens (map analyze-token (clojure.string/split sample #"\b"))]
-    (f/unparse 
-      (f/formatter 
-        (tokens-to-string 
-          (if (some ambiguous? tokens) (disambiguate tokens) tokens))) 
-      date)))
+    (f/formatter 
+      (tokens-to-string 
+        (if (some ambiguous? tokens) (disambiguate tokens) tokens)))))
+
+(defn dformat
+  "Same as above, but returns a formatted string." 
+  [date sample]
+  (f/unparse (dformatter sample) date))
